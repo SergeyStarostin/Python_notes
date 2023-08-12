@@ -34,7 +34,6 @@ class Notes:
         """
         note = NoteFactory.create(id, title, text)
         self.notes.append(note)
-        self.save_to_file()
         print(texts.note_created, note)
 
     def delete(self, id):
@@ -44,7 +43,6 @@ class Notes:
         note = self.get_note_by_id(id)
         if note:
             self.notes.remove(note)
-            self.save_to_file()
             print(texts.note_deleted, note)
         else:
             print(texts.note_not_found, id)
@@ -62,7 +60,6 @@ class Notes:
             if text:
                 note.text = text
             note.modified = datetime.now()
-            self.save_to_file()
             print(texts.note_edited, note)
         else:
             print(texts.note_not_found, id)
